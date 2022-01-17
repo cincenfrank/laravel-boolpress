@@ -6,41 +6,50 @@
       <h5 class="mb-5 text-black-50">The best blog in town!</h5>
       <!-- <h1 class="text-success">Vue Page</h1> -->
       <h4>Suggested for you:</h4>
-      <MainPost></MainPost>
-      <h4>Category A</h4>
-      <div class="row mb-5 mt-3">
-        <div class="col-4">
-          <SuggestedPost></SuggestedPost>
+      <MainPost :postData="postData"></MainPost>
+      <h4 class="my-3">Category A</h4>
+      <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-2">
+        <div class="col">
+          <SuggestedPost :postData="postData"></SuggestedPost>
         </div>
-        <div class="col-4">
-          <SuggestedPost></SuggestedPost>
+        <div class="col">
+          <SuggestedPost :postData="postData"></SuggestedPost>
         </div>
-        <div class="col-4">
-          <SuggestedPost></SuggestedPost>
+        <div class="col">
+          <SuggestedPost :postData="postData"></SuggestedPost>
         </div>
-      </div>
-      <h4>Category B</h4>
-      <div class="row mb-5 mt-3">
-        <div class="col-4">
-          <SuggestedPost></SuggestedPost>
-        </div>
-        <div class="col-4">
-          <SuggestedPost></SuggestedPost>
-        </div>
-        <div class="col-4">
-          <SuggestedPost></SuggestedPost>
+        <div class="col d-md-none d-lg-block">
+          <SuggestedPost :postData="postData"></SuggestedPost>
         </div>
       </div>
-      <h4>Category C</h4>
-      <div class="row mb-5 mt-3">
-        <div class="col-4">
-          <SuggestedPost></SuggestedPost>
+      <h4 class="my-3">Category B</h4>
+      <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-2">
+        <div class="col">
+          <SuggestedPost :postData="postData"></SuggestedPost>
         </div>
-        <div class="col-4">
-          <SuggestedPost></SuggestedPost>
+        <div class="col">
+          <SuggestedPost :postData="postData"></SuggestedPost>
         </div>
-        <div class="col-4">
-          <SuggestedPost></SuggestedPost>
+        <div class="col">
+          <SuggestedPost :postData="postData"></SuggestedPost>
+        </div>
+        <div class="col d-md-none d-lg-block">
+          <SuggestedPost :postData="postData"></SuggestedPost>
+        </div>
+      </div>
+      <h4 class="my-3">Category C</h4>
+      <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-2">
+        <div class="col">
+          <SuggestedPost :postData="postData"></SuggestedPost>
+        </div>
+        <div class="col">
+          <SuggestedPost :postData="postData"></SuggestedPost>
+        </div>
+        <div class="col">
+          <SuggestedPost :postData="postData"></SuggestedPost>
+        </div>
+        <div class="col d-md-none d-lg-block">
+          <SuggestedPost :postData="postData"></SuggestedPost>
         </div>
       </div>
     </div>
@@ -54,6 +63,18 @@ import SuggestedPost from "../components/SuggestedPost.vue";
 export default {
   name: "App",
   components: { GuestNavigationBar, MainPost, SuggestedPost },
+  data() {
+    return {
+      postData: {
+        title: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        updatedAt: "15/01/2022 16:35:45",
+        imageSrc:
+          "https://www.lamialiguria.it/images/2020/12/22/manarola_ag.jpg",
+        description:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero magni dolorem sit temporibus enim esse explicabo excepturi quam nostrum eveniet vitae, dolore dolorum corrupti saepe modi laborum delectus autem sint. Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero magni dolorem sit temporibus enim esse explicabo excepturi quam nostrum eveniet vitae, dolore dolorum corrupti saepe modi laborum delectus autem sint .Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero magni dolorem sit temporibus enim esse explicabo excepturi quam nostrum eveniet vitae, dolore dolorum corrupti saepe modi laborum delectus autem sint. Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero magni dolorem sit temporibus enim esse explicabo excepturi quam nostrum eveniet vitae, dolore dolorum corrupti saepe modi laborum delectus autem sint. Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero magni dolorem sit temporibus enim esse explicabo excepturi quam nostrum eveniet vitae, dolore dolorum corrupti saepe modi laborum delectus autem sint. Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero magni dolorem sit temporibus enim esse explicabo excepturi quam nostrum eveniet vitae, dolore dolorum corrupti saepe modi laborum delectus autem sint",
+      },
+    };
+  },
 };
 </script>
 
