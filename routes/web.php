@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('guests.home');
+})->name('guests.home');
 
 Auth::routes();
 
@@ -33,5 +33,5 @@ Route::middleware('auth')
 
 
 Route::get('{any?}', function () {
-    return view('guests.home');
+    return redirect()->route('guests.home');
 })->where('any', '.*');
