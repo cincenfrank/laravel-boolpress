@@ -4,7 +4,11 @@
       :src="postData['imageSrc']"
       class="img-fluid rounded w-100"
       alt="..."
-      style="max-height: 200px; border-radius: 10px !important"
+      style="
+        max-height: 200px;
+        border-radius: 10px !important;
+        object-fit: cover;
+      "
     />
     <p class="text-left">
       <small class="text-muted">Last update: {{ postData["updatedAt"] }}</small>

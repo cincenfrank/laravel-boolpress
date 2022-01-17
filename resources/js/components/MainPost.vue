@@ -6,7 +6,11 @@
           :src="postData['imageSrc']"
           class="img-fluid rounded w-100"
           alt="..."
-          style="max-height: 300px; border-radius: 20px !important"
+          style="
+            max-height: 300px;
+            border-radius: 20px !important;
+            object-fit: cover;
+          "
         />
       </div>
       <div class="col-md-7 align-self-center">
