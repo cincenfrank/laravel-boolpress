@@ -219,11 +219,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "MainPost"
+  name: "MainPost",
+  props: {
+    postData: Object
+  },
+  computed: {
+    getShortDescription: function getShortDescription() {
+      if (this.postData["description"].length > 300) {
+        return this.postData["description"].substring(0, 300) + "...";
+      } else {
+        return this.postData["description"];
+      }
+    }
+  }
 });
 
 /***/ }),
@@ -258,7 +267,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "SuggestedPost"
+  name: "SuggestedPost",
+  props: {
+    postData: Object
+  }
 });
 
 /***/ }),
@@ -324,6 +336,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -333,6 +354,16 @@ __webpack_require__.r(__webpack_exports__);
     GuestNavigationBar: _components_GuestNavigationBar_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     MainPost: _components_MainPost_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     SuggestedPost: _components_SuggestedPost_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  data: function data() {
+    return {
+      postData: {
+        title: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        updatedAt: "15/01/2022 16:35:45",
+        imageSrc: "https://www.lamialiguria.it/images/2020/12/22/manarola_ag.jpg",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero magni dolorem sit temporibus enim esse explicabo excepturi quam nostrum eveniet vitae, dolore dolorum corrupti saepe modi laborum delectus autem sint. Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero magni dolorem sit temporibus enim esse explicabo excepturi quam nostrum eveniet vitae, dolore dolorum corrupti saepe modi laborum delectus autem sint .Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero magni dolorem sit temporibus enim esse explicabo excepturi quam nostrum eveniet vitae, dolore dolorum corrupti saepe modi laborum delectus autem sint. Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero magni dolorem sit temporibus enim esse explicabo excepturi quam nostrum eveniet vitae, dolore dolorum corrupti saepe modi laborum delectus autem sint. Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero magni dolorem sit temporibus enim esse explicabo excepturi quam nostrum eveniet vitae, dolore dolorum corrupti saepe modi laborum delectus autem sint. Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero magni dolorem sit temporibus enim esse explicabo excepturi quam nostrum eveniet vitae, dolore dolorum corrupti saepe modi laborum delectus autem sint"
+      }
+    };
   }
 });
 
@@ -876,16 +907,18 @@ var staticRenderFns = [
                       "a",
                       {
                         staticClass: "nav-link active",
-                        attrs: { "aria-current": "page", href: "#" },
+                        attrs: { "aria-current": "page", href: "/" },
                       },
                       [_vm._v("Home")]
                     ),
                   ]),
                   _vm._v(" "),
                   _c("li", { staticClass: "nav-item" }, [
-                    _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                      _vm._v("Link"),
-                    ]),
+                    _c(
+                      "a",
+                      { staticClass: "nav-link", attrs: { href: "/admin" } },
+                      [_vm._v("Admin")]
+                    ),
                   ]),
                   _vm._v(" "),
                   _c("li", { staticClass: "nav-item dropdown" }, [
@@ -1015,63 +1048,51 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mb-5 mt-3" }, [
-      _c("div", { staticClass: "row g-0" }, [
-        _c("div", { staticClass: "col-md-5" }, [
-          _c("img", {
-            staticClass: "img-fluid rounded w-100",
-            staticStyle: {
-              "max-height": "300px",
-              "border-radius": "20px !important",
-            },
-            attrs: {
-              src: "https://www.lamialiguria.it/images/2020/12/22/manarola_ag.jpg",
-              alt: "...",
-            },
-          }),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-7 align-self-center" }, [
-          _c("div", {}, [
-            _c("p", { staticClass: "text-left" }, [
-              _c("small", { staticClass: "text-muted" }, [
-                _vm._v("Last update: 15/01/2022 16:35:45"),
-              ]),
+  return _c("div", { staticClass: "mb-5 mt-3" }, [
+    _c("div", { staticClass: "row g-0" }, [
+      _c("div", { staticClass: "col-md-5" }, [
+        _c("img", {
+          staticClass: "img-fluid rounded w-100",
+          staticStyle: {
+            "max-height": "300px",
+            "border-radius": "20px !important",
+          },
+          attrs: { src: _vm.postData["imageSrc"], alt: "..." },
+        }),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-7 align-self-center" }, [
+        _c("div", {}, [
+          _c("p", { staticClass: "text-left" }, [
+            _c("small", { staticClass: "text-muted" }, [
+              _vm._v("Last update: " + _vm._s(_vm.postData["updatedAt"])),
             ]),
-            _vm._v(" "),
-            _c("h2", { staticClass: "text-left" }, [
-              _vm._v(
-                "\n          Lorem ipsum dolor sit amet consectetur adipisicing elit.\n        "
-              ),
-            ]),
-            _vm._v(" "),
-            _c("p", { staticClass: "text-left" }, [
-              _vm._v(
-                "\n          Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero\n          magni dolorem sit temporibus enim esse explicabo excepturi quam\n          nostrum eveniet vitae, dolore dolorum corrupti saepe modi laborum\n          delectus autem sint...\n        "
-              ),
-            ]),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "btn btn-outline-primary text-left",
-                attrs: { href: "#", role: "button" },
-              },
-              [_vm._v("Read More")]
+          ]),
+          _vm._v(" "),
+          _c("h2", { staticClass: "text-left" }, [
+            _vm._v(
+              "\n          " + _vm._s(_vm.postData["title"]) + "\n        "
             ),
           ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "text-left" }, [
+            _vm._v(_vm._s(_vm.getShortDescription)),
+          ]),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-outline-primary text-left",
+              attrs: { href: "#", role: "button" },
+            },
+            [_vm._v("Read More")]
+          ),
         ]),
       ]),
-    ])
-  },
-]
+    ]),
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -1093,49 +1114,37 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", {}, [
+    _c("img", {
+      staticClass: "img-fluid rounded w-100",
+      staticStyle: {
+        "max-height": "200px",
+        "border-radius": "10px !important",
+      },
+      attrs: { src: _vm.postData["imageSrc"], alt: "..." },
+    }),
+    _vm._v(" "),
+    _c("p", { staticClass: "text-left" }, [
+      _c("small", { staticClass: "text-muted" }, [
+        _vm._v("Last update: " + _vm._s(_vm.postData["updatedAt"])),
+      ]),
+    ]),
+    _vm._v(" "),
+    _c("h4", { staticClass: "text-left" }, [
+      _vm._v("\n    " + _vm._s(_vm.postData["title"]) + "\n  "),
+    ]),
+    _vm._v(" "),
+    _c(
+      "a",
+      {
+        staticClass: "btn btn-outline-primary text-left",
+        attrs: { href: "#", role: "button" },
+      },
+      [_vm._v("Read More")]
+    ),
+  ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", {}, [
-      _c("img", {
-        staticClass: "img-fluid rounded w-100",
-        staticStyle: {
-          "max-height": "200px",
-          "border-radius": "10px !important",
-        },
-        attrs: {
-          src: "https://www.lamialiguria.it/images/2020/12/22/manarola_ag.jpg",
-          alt: "...",
-        },
-      }),
-      _vm._v(" "),
-      _c("p", { staticClass: "text-left" }, [
-        _c("small", { staticClass: "text-muted" }, [
-          _vm._v("Last update: 15/01/2022 16:35:45"),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("h4", { staticClass: "text-left" }, [
-        _vm._v(
-          "\n    Lorem ipsum dolor sit amet consectetur adipisicing elit.\n  "
-        ),
-      ]),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "btn btn-outline-primary text-left",
-          attrs: { href: "#", role: "button" },
-        },
-        [_vm._v("Read More")]
-      ),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -1175,37 +1184,124 @@ var render = function () {
           _vm._v(" "),
           _c("h4", [_vm._v("Suggested for you:")]),
           _vm._v(" "),
-          _c("MainPost"),
+          _c("MainPost", { attrs: { postData: _vm.postData } }),
           _vm._v(" "),
-          _c("h4", [_vm._v("Category A")]),
+          _c("h4", { staticClass: "my-3" }, [_vm._v("Category A")]),
           _vm._v(" "),
-          _c("div", { staticClass: "row mb-5 mt-3" }, [
-            _c("div", { staticClass: "col-4" }, [_c("SuggestedPost")], 1),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-4" }, [_c("SuggestedPost")], 1),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-4" }, [_c("SuggestedPost")], 1),
-          ]),
+          _c(
+            "div",
+            {
+              staticClass:
+                "row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-2",
+            },
+            [
+              _c(
+                "div",
+                { staticClass: "col" },
+                [_c("SuggestedPost", { attrs: { postData: _vm.postData } })],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col" },
+                [_c("SuggestedPost", { attrs: { postData: _vm.postData } })],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col" },
+                [_c("SuggestedPost", { attrs: { postData: _vm.postData } })],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col d-md-none d-lg-block" },
+                [_c("SuggestedPost", { attrs: { postData: _vm.postData } })],
+                1
+              ),
+            ]
+          ),
           _vm._v(" "),
-          _c("h4", [_vm._v("Category B")]),
+          _c("h4", { staticClass: "my-3" }, [_vm._v("Category B")]),
           _vm._v(" "),
-          _c("div", { staticClass: "row mb-5 mt-3" }, [
-            _c("div", { staticClass: "col-4" }, [_c("SuggestedPost")], 1),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-4" }, [_c("SuggestedPost")], 1),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-4" }, [_c("SuggestedPost")], 1),
-          ]),
+          _c(
+            "div",
+            {
+              staticClass:
+                "row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-2",
+            },
+            [
+              _c(
+                "div",
+                { staticClass: "col" },
+                [_c("SuggestedPost", { attrs: { postData: _vm.postData } })],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col" },
+                [_c("SuggestedPost", { attrs: { postData: _vm.postData } })],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col" },
+                [_c("SuggestedPost", { attrs: { postData: _vm.postData } })],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col d-md-none d-lg-block" },
+                [_c("SuggestedPost", { attrs: { postData: _vm.postData } })],
+                1
+              ),
+            ]
+          ),
           _vm._v(" "),
-          _c("h4", [_vm._v("Category C")]),
+          _c("h4", { staticClass: "my-3" }, [_vm._v("Category C")]),
           _vm._v(" "),
-          _c("div", { staticClass: "row mb-5 mt-3" }, [
-            _c("div", { staticClass: "col-4" }, [_c("SuggestedPost")], 1),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-4" }, [_c("SuggestedPost")], 1),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-4" }, [_c("SuggestedPost")], 1),
-          ]),
+          _c(
+            "div",
+            {
+              staticClass:
+                "row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-2",
+            },
+            [
+              _c(
+                "div",
+                { staticClass: "col" },
+                [_c("SuggestedPost", { attrs: { postData: _vm.postData } })],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col" },
+                [_c("SuggestedPost", { attrs: { postData: _vm.postData } })],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col" },
+                [_c("SuggestedPost", { attrs: { postData: _vm.postData } })],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col d-md-none d-lg-block" },
+                [_c("SuggestedPost", { attrs: { postData: _vm.postData } })],
+                1
+              ),
+            ]
+          ),
         ],
         1
       ),
