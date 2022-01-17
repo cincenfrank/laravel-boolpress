@@ -219,6 +219,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "MainPost",
   props: {
@@ -246,6 +250,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -1056,6 +1064,7 @@ var render = function () {
           staticStyle: {
             "max-height": "300px",
             "border-radius": "20px !important",
+            "object-fit": "cover",
           },
           attrs: { src: _vm.postData["imageSrc"], alt: "..." },
         }),
@@ -1120,6 +1129,7 @@ var render = function () {
       staticStyle: {
         "max-height": "200px",
         "border-radius": "10px !important",
+        "object-fit": "cover",
       },
       attrs: { src: _vm.postData["imageSrc"], alt: "..." },
     }),
