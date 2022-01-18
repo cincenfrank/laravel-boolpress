@@ -17,13 +17,13 @@
         <div class="">
           <p class="text-left">
             <small class="text-muted"
-              >Last update: {{ postData["updatedAt"] }}</small
+              >Last update: {{ postData["updated_at"] }}</small
             >
           </p>
           <h2 class="text-left">
             {{ postData["title"] }}
           </h2>
-          <p class="text-left">{{ getShortDescription }}</p>
+          <p class="text-left">{{ getShortContent }}</p>
           <a class="btn btn-outline-primary text-left" href="#" role="button"
             >Read More</a
           >
@@ -40,11 +40,11 @@ export default {
     postData: Object,
   },
   computed: {
-    getShortDescription() {
-      if (this.postData["description"].length > 300) {
-        return this.postData["description"].substring(0, 300) + "...";
+    getShortContent() {
+      if (this.postData["content"].length > 300) {
+        return this.postData["content"].substring(0, 300) + "...";
       } else {
-        return this.postData["description"];
+        return this.postData["content"];
       }
     },
   },

@@ -11,7 +11,9 @@
       "
     />
     <p class="text-left">
-      <small class="text-muted">Last update: {{ postData["updatedAt"] }}</small>
+      <small class="text-muted"
+        >Last update: {{ postData["updated_at"] }}</small
+      >
     </p>
     <h4 class="text-left">
       {{ postData["title"] }}
