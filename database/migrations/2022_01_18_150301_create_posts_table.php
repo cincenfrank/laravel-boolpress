@@ -20,6 +20,7 @@ class CreatePostsTable extends Migration
             $table->string('author');
             $table->string('category');
             $table->boolean('published')->default(true);
+            $table->string('imageSrc');
             $table->timestamps();
         });
     }
