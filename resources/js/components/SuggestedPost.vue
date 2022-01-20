@@ -10,10 +10,14 @@
         object-fit: cover;
       "
     />
+
     <p class="text-left">
       <small class="text-muted"
         >Last update: {{ postData["updated_at"] }}</small
       >
+      <span class="badge badge-pill font-weight-bold badge-primary mb-3">{{
+        postData["category"]
+      }}</span>
     </p>
     <h4 class="text-left">
       {{ postData["title"] }}

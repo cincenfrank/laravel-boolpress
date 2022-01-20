@@ -5,7 +5,8 @@
       <h1>BoolPress Blog</h1>
       <h5 class="mb-5 text-black-50">The best blog in town!</h5>
       <!-- <h1 class="text-success">Vue Page</h1> -->
-      <div v-if="posts.length > 0">
+      <h1 v-if="!loaded">Loading</h1>
+      <div v-if="initData && posts.length > 0">
         <h4>Suggested for you:</h4>
 
         <MainPost :postData="posts[randomIndex]"></MainPost>
@@ -66,6 +67,10 @@ export default {
   data() {
     return {
       posts: [],
+      categories: [],
+      postLoaded: false,
+      categoryLoaded: false,
+      initData: false,
     };
   },
   methods: {
@@ -73,7 +78,24 @@ export default {
       axios.get("/api/posts").then((resp) => {
         // console.log(resp.data);
         this.posts = resp.data;
+        this.postLoaded = true;
+        this.initializeData();
       });
+    },
+    getCategories() {
+      axios.get("/api/categories").then((resp) => {
+        this.categories = resp.data;
+        this.categoryLoaded = true;
+        this.initializeData();
+      });
+    },
+    initializeData() {
+      if (this.loaded) {
+        this.posts.forEach((post) => {
+          post.category = this.categories[post.category_id - 1]["name"];
+        });
+        this.initData = true;
+      }
     },
     getRandomInt(min, max) {
       min = Math.ceil(min);
@@ -85,9 +107,13 @@ export default {
     randomIndex() {
       return this.getRandomInt(0, this.posts.length);
     },
+    loaded() {
+      return this.postLoaded && this.categoryLoaded;
+    },
   },
   mounted() {
     this.getPosts();
+    this.getCategories();
   },
 };
 </script>

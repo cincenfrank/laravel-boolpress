@@ -4,11 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Http\Controllers\Controller;
-use App\Post;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class PostController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +16,6 @@ class PostController extends Controller
     public function index()
     {
         //
-        $posts = Post::where("author_id", Auth::user()->id)->get();
-        return view('admin.posts.home', compact('posts'));
     }
 
     /**
@@ -30,8 +26,6 @@ class PostController extends Controller
     public function create()
     {
         //
-        $categories = Category::all();
-        return view('admin.posts.create', compact('categories'));
     }
 
     /**
@@ -43,21 +37,15 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
-        $newPost = new Post();
-        $newPost->fill($request->all());
-        $newPost->author = Auth::user()->id;
-        $newPost->save();
-
-        return redirect()->route('admin.posts.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Post  $post
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(Category $category)
     {
         //
     }
@@ -65,41 +53,34 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Post  $post
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit(Category $category)
     {
         //
-        $categories = Category::all();
-        return view('admin.posts.edit', ['post' => $post, 'categories' => $categories]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Post  $post
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, Category $category)
     {
         //
-        $post->update($request->all());
-        // $post->save();
-        return redirect()->route('admin.posts.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Post  $post
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Category $category)
     {
         //
-        $post->delete();
-        return redirect()->route('admin.posts.index')->with(['message' => 'Post eliminato correttamente']);
     }
 }

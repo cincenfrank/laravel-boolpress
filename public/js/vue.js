@@ -2036,6 +2036,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "MainPost",
   props: {
@@ -2063,6 +2066,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -2169,6 +2176,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -2182,7 +2190,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      posts: []
+      posts: [],
+      categories: [],
+      postLoaded: false,
+      categoryLoaded: false,
+      initData: false
     };
   },
   methods: {
@@ -2192,7 +2204,30 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("/api/posts").then(function (resp) {
         // console.log(resp.data);
         _this.posts = resp.data;
+        _this.postLoaded = true;
+
+        _this.initializeData();
       });
+    },
+    getCategories: function getCategories() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("/api/categories").then(function (resp) {
+        _this2.categories = resp.data;
+        _this2.categoryLoaded = true;
+
+        _this2.initializeData();
+      });
+    },
+    initializeData: function initializeData() {
+      var _this3 = this;
+
+      if (this.loaded) {
+        this.posts.forEach(function (post) {
+          post.category = _this3.categories[post.category_id - 1]["name"];
+        });
+        this.initData = true;
+      }
     },
     getRandomInt: function getRandomInt(min, max) {
       min = Math.ceil(min);
@@ -2203,10 +2238,14 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     randomIndex: function randomIndex() {
       return this.getRandomInt(0, this.posts.length);
+    },
+    loaded: function loaded() {
+      return this.postLoaded && this.categoryLoaded;
     }
   },
   mounted: function mounted() {
     this.getPosts();
+    this.getCategories();
   }
 });
 
@@ -2907,11 +2946,20 @@ var render = function () {
       _vm._v(" "),
       _c("div", { staticClass: "col-md-7 align-self-center" }, [
         _c("div", {}, [
-          _c("p", { staticClass: "text-left" }, [
+          _c("p", { staticClass: "text-left mb-0" }, [
             _c("small", { staticClass: "text-muted" }, [
               _vm._v("Last update: " + _vm._s(_vm.postData["updated_at"])),
             ]),
           ]),
+          _vm._v(" "),
+          _c(
+            "span",
+            {
+              staticClass:
+                "badge badge-pill font-weight-bold badge-primary mb-3",
+            },
+            [_vm._v(_vm._s(_vm.postData["category"]))]
+          ),
           _vm._v(" "),
           _c("h2", { staticClass: "text-left" }, [
             _vm._v(
@@ -2973,6 +3021,12 @@ var render = function () {
       _c("small", { staticClass: "text-muted" }, [
         _vm._v("Last update: " + _vm._s(_vm.postData["updated_at"])),
       ]),
+      _vm._v(" "),
+      _c(
+        "span",
+        { staticClass: "badge badge-pill font-weight-bold badge-primary mb-3" },
+        [_vm._v(_vm._s(_vm.postData["category"]))]
+      ),
     ]),
     _vm._v(" "),
     _c("h4", { staticClass: "text-left" }, [
@@ -3024,7 +3078,9 @@ var render = function () {
           _vm._v("The best blog in town!"),
         ]),
         _vm._v(" "),
-        _vm.posts.length > 0
+        !_vm.loaded ? _c("h1", [_vm._v("Loading")]) : _vm._e(),
+        _vm._v(" "),
+        _vm.initData && _vm.posts.length > 0
           ? _c(
               "div",
               [

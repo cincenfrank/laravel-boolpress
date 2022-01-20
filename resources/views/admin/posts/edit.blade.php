@@ -5,7 +5,7 @@
 <div class="row justify-content-center">
     <div class="col-md-8">
         <div class="card">
-            <div class="card-header">Edit Post</div>
+            <div class="card-header">Edit Post - author {{$post->user->name}} - category {{$post->category->name}}</div>
 
             <div class="card-body">
                 <form action="{{route('admin.posts.update',$post->id)}}" method="post" class="form">
@@ -22,13 +22,16 @@
                                 <div class="form-group">
                                     <label for="">Category</label>
                                     <label for="category"></label>
-                                    <select class="form-control" name="category" id="category" value='{{$post->category}}'>
-                                        <option value='Tech'>Tech</option>
-                                        <option value='Motors'>Motors</option>
+                                    <select class="form-control" name="category_id" id="category_id">
+                                        @foreach ($categories as $category)
+
+                                        <option value={{$category->id}} @if($category->id===$post->category_id) selected @endif>{{$category->name}}</option>
+                                        @endforeach
+                                        {{-- <option value='Motors'>Motors</option>
                                         <option value='Health'>Health</option>
                                         <option value='Sport'>Sport</option>
                                         <option value='Politics'>Politics</option>
-                                        <option value='Fashion'>Fashion</option>
+                                        <option value='Fashion'>Fashion</option> --}}
                                     </select>
                                 </div>
                                 <div class="form-group">

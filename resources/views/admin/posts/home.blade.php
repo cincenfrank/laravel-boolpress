@@ -12,8 +12,12 @@
                     @foreach ($posts as $post)
                     <li class="list-group-item">
                         <div class="d-flex justify-content-between align-items-center">
-                            <span>{{$post->title}}</span>
                             <div>
+                                <span class="badge badge-pill font-weight-bold badge-primary mb-3 mr-2">{{$post->category->name}}</span>
+                                <span>{{$post->title}}</span>
+                            </div>
+                            <div>
+
                                 <a class="btn btn-outline-info mr-3" href="{{route('admin.posts.edit',$post->id)}}">Edit</a>
                                 <form class="d-inline-block" action="{{route('admin.posts.destroy',$post)}}" method="post">
                                     @csrf

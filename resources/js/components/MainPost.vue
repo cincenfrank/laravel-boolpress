@@ -15,11 +15,14 @@
       </div>
       <div class="col-md-7 align-self-center">
         <div class="">
-          <p class="text-left">
+          <p class="text-left mb-0">
             <small class="text-muted"
               >Last update: {{ postData["updated_at"] }}</small
             >
           </p>
+          <span class="badge badge-pill font-weight-bold badge-primary mb-3">{{
+            postData["category"]
+          }}</span>
           <h2 class="text-left">
             {{ postData["title"] }}
           </h2>
