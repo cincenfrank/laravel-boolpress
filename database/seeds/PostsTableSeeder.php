@@ -19,8 +19,8 @@ class PostsTableSeeder extends Seeder
             $newPost->title = $faker->sentence();
             $newPost->content = $faker->paragraph(50);
             $newPost->published = $faker->boolean();
-            $newPost->category = $faker->randomElement(['Tech', 'Motors', 'Health', 'Sport', 'Politics', 'Fashion']);
-            $newPost->author = $faker->randomElement(['CinCenFrank', 'MarioRossi', 'HappyGranny']);
+            // $newPost->category = $faker->randomElement(['Tech', 'Motors', 'Health', 'Sport', 'Politics', 'Fashion']);
+            // $newPost->author = $faker->randomElement(['CinCenFrank', 'MarioRossi', 'HappyGranny']);
             $newPost->imageSrc = $faker->imageUrl();
             $newPost->save();
         }
