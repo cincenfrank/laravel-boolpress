@@ -14,7 +14,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <span>{{$post->title}}</span>
                             <div>
-                                <a class="btn btn-outline-info mr-3" href="">Edit</a>
+                                <a class="btn btn-outline-info mr-3" href="{{route('admin.posts.edit',$post->id)}}">Edit</a>
                                 <form class="d-inline-block" action="{{route('admin.posts.destroy',$post)}}" method="post">
                                     @csrf
                                     @method('delete')
