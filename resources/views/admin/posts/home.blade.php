@@ -3,7 +3,7 @@
 
 {{-- <h1>Sono la view Posts Home</h1> --}}
 <div class="row justify-content-center h-100">
-    <div class="col-md-8 h-100 overflow-hidden">
+    <div class="col-md-8 h-100 overflow-hidden py-5">
         <div class="card h-100 ">
             <div class="d-flex justify-content-between card-header">
                 <div class="">{{ __('Posts Pubblicati') }}</div>

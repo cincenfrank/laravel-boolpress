@@ -19,6 +19,8 @@ class PostController extends Controller
     public function index()
     {
         //
+
+
         $posts = Post::where("author_id", Auth::user()->id)->get();
         return view('admin.posts.home', compact('posts'));
     }
@@ -31,8 +33,9 @@ class PostController extends Controller
     public function create()
     {
         //
+        $tags = Tag::all();
         $categories = Category::all();
-        return view('admin.posts.create', compact('categories'));
+        return view('admin.posts.create', ['categories' => $categories, 'tags' => $tags]);
     }
 
     /**
@@ -44,10 +47,18 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
+        $data = $request->all();
         $newPost = new Post();
-        $newPost->fill($request->all());
-        $newPost->author = Auth::user()->id;
+        $newPost->fill($data);
+        $newPost->author_id = Auth::user()->id;
+        // dump($data['tags']);
+
+
         $newPost->save();
+        if ($data['tags']) {
+            # code...
+            $newPost->tags()->sync($data['tags']);
+        }
 
         return redirect()->route('admin.posts.index');
     }
@@ -102,6 +113,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         //
+        $post->tags()->detach();
         $post->delete();
         return redirect()->route('admin.posts.index')->with(['message' => 'Post eliminato correttamente']);
     }

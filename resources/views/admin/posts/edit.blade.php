@@ -35,27 +35,32 @@
                                     </select>
                                     {{-- {{dump($tags)}}
                                     {{dump($categories)}} --}}
-                                    <div class="form-group">
-                                        <label for="tags">Tags</label>
-                                        <select multiple class="form-control" name="tags[]" id="tags">
+                                </div>
+                                <div class="form-group">
+                                    <label for="tags">Tags</label>
+                                    <select multiple class="form-control" name="tags[]" id="tags">
 
-                                            @foreach ($tags as $tag)
+                                        @foreach ($tags as $tag)
 
-                                            <option value={{$tag->id}} @if($post->tags->contains($tag)) selected @endif >{{$tag->name}}</option>
-                                            @endforeach
+                                        <option value={{$tag->id}} @if($post->tags->contains($tag)) selected @endif >{{$tag->name}}</option>
+                                        @endforeach
 
-                                        </select>
-                                    </div>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Visibility</label>
                                     <div class="form-check">
                                         <label class="form-check-label">
-                                            <input type="radio" class="form-check-input" name="published" id="published" value="1">
+                                            <input type="radio" class="form-check-input" name="published" id="published" value="1" @if ($post->published)
+                                            checked
+                                            @endif>
                                             Public
                                         </label>
+
                                         <label class="form-check-label ml-5">
-                                            <input type="radio" class="form-check-input" name="published" id="published" value="0">
+                                            <input type="radio" class="form-check-input" name="published" id="published" value="0" @if (!$post->published)
+                                            checked
+                                            @endif>
                                             Hidden
                                         </label>
                                     </div>
