@@ -23,12 +23,20 @@
                 Posts
             </a>
         </li>
-        <li>
+        {{-- <li>
             <a href="{{route('admin.posts.create')}}" class="nav-link text-white">
+        <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#table"></use>
+        </svg>
+        Create New Post
+        </a>
+        </li> --}}
+        <li>
+            <a href="{{route('admin.categories.index')}}" class="nav-link text-white">
                 <svg class="bi me-2" width="16" height="16">
                     <use xlink:href="#table"></use>
                 </svg>
-                Create New Post
+                Categories
             </a>
         </li>
         {{-- <li>

@@ -2,12 +2,14 @@
 @section('content')
 
 {{-- <h1>Sono la view Posts Home</h1> --}}
-<div class="row justify-content-center">
-    <div class="col-md-8">
-        <div class="card">
-            <div class="card-header">{{ __('Posts Pubblicati') }}</div>
-
-            <div class="card-body">
+<div class="row justify-content-center h-100">
+    <div class="col-md-8 h-100 overflow-hidden">
+        <div class="card h-100 ">
+            <div class="d-flex justify-content-between card-header">
+                <div class="">{{ __('Posts Pubblicati') }}</div>
+                <a class="btn btn-outline-success" href="{{route('admin.posts.create')}}">Create New Post</a>
+            </div>
+            <div class="card-body overflow-auto">
                 <ul class="list-group list-group-flush">
                     @foreach ($posts as $post)
                     <li class="list-group-item">

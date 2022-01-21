@@ -73,7 +73,7 @@
     <main>
         <div class="d-flex">
             @include('partials.adminSidebar')
-            <div class=" flex-grow-1" style="margin-left: 240px">
+            <div class=" flex-grow-1 vh-100" style="margin-left: 240px">
                 @yield('content')
             </div>
         </div>
