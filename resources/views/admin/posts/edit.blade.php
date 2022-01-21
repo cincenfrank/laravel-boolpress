@@ -33,6 +33,19 @@
                                         <option value='Politics'>Politics</option>
                                         <option value='Fashion'>Fashion</option> --}}
                                     </select>
+                                    {{-- {{dump($tags)}}
+                                    {{dump($categories)}} --}}
+                                    <div class="form-group">
+                                        <label for="tags">Tags</label>
+                                        <select multiple class="form-control" name="tags[]" id="tags">
+
+                                            @foreach ($tags as $tag)
+
+                                            <option value={{$tag->id}} @if($post->tags->contains($tag)) selected @endif >{{$tag->name}}</option>
+                                            @endforeach
+
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Visibility</label>
