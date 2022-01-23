@@ -1,12 +1,12 @@
 @extends('layouts.admin')
 @section('content')
 
-{{-- <h1>Sono la view Posts Home</h1> --}}
 <div class="row justify-content-center h-100">
     <div class="col-md-8 h-100 overflow-hidden py-5">
         <div class="card h-100 ">
             <div class="d-flex justify-content-between card-header">
                 <div class="">{{ __('Posts Pubblicati') }}</div>
+
                 <a class="btn btn-outline-success" href="{{route('admin.posts.create')}}">Create New Post</a>
             </div>
             <div class="card-body overflow-auto">
@@ -16,7 +16,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <span class="badge badge-pill font-weight-bold badge-primary mb-3 mr-2">{{$post->category->name}}</span>
-                                <span>{{$post->title}}</span>
+                                <a href="{{route('admin.posts.show',$post->id)}}">{{$post->title}}</a>
                             </div>
                             <div>
 

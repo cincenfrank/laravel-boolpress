@@ -8,7 +8,7 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-            <a href="#" class="nav-link active" aria-current="page">
+            <a href="{{route('guests.home')}}" class="nav-link text-white" aria-current="page">
                 <svg class="bi me-2" width="16" height="16">
                     <use xlink:href="#home"></use>
                 </svg>
@@ -16,7 +16,9 @@
             </a>
         </li>
         <li>
-            <a href="{{route('admin.posts.index')}}" class="nav-link text-white">
+            <a href="{{route('admin.posts.index')}}" class="nav-link text-white @if(Route::currentRouteName()==='admin.posts.index') active
+                
+            @endif">
                 <svg class="bi me-2" width="16" height="16">
                     <use xlink:href="#speedometer2"></use>
                 </svg>
@@ -32,7 +34,9 @@
         </a>
         </li> --}}
         <li>
-            <a href="{{route('admin.categories.index')}}" class="nav-link text-white">
+            <a href="{{route('admin.categories.index')}}" class="nav-link text-white @if(Route::currentRouteName()==='admin.categories.index') active
+                
+            @endif">
                 <svg class="bi me-2" width="16" height="16">
                     <use xlink:href="#table"></use>
                 </svg>

@@ -2039,6 +2039,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "MainPost",
   props: {
@@ -2220,12 +2226,10 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     initializeData: function initializeData() {
-      var _this3 = this;
-
       if (this.loaded) {
-        this.posts.forEach(function (post) {
-          post.category = _this3.categories[post.category_id - 1]["name"];
-        });
+        //   this.posts.forEach((post) => {
+        //     post.category = this.categories[post.category_id - 1]["name"];
+        //   });
         this.initData = true;
       }
     },
@@ -2945,41 +2949,58 @@ var render = function () {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-7 align-self-center" }, [
-        _c("div", {}, [
-          _c("p", { staticClass: "text-left mb-0" }, [
-            _c("small", { staticClass: "text-muted" }, [
-              _vm._v("Last update: " + _vm._s(_vm.postData["updated_at"])),
+        _c(
+          "div",
+          {},
+          [
+            _c("p", { staticClass: "text-left mb-0" }, [
+              _c("small", { staticClass: "text-muted" }, [
+                _vm._v("Last update: " + _vm._s(_vm.postData["updated_at"])),
+              ]),
             ]),
-          ]),
-          _vm._v(" "),
-          _c(
-            "span",
-            {
-              staticClass:
-                "badge badge-pill font-weight-bold badge-primary mb-3",
-            },
-            [_vm._v(_vm._s(_vm.postData["category"]))]
-          ),
-          _vm._v(" "),
-          _c("h2", { staticClass: "text-left" }, [
-            _vm._v(
-              "\n          " + _vm._s(_vm.postData["title"]) + "\n        "
+            _vm._v(" "),
+            _c(
+              "span",
+              {
+                staticClass:
+                  "badge badge-pill font-weight-bold badge-primary mb-3",
+              },
+              [_vm._v(_vm._s(_vm.postData["category"]["name"]))]
             ),
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "text-left" }, [
-            _vm._v(_vm._s(_vm.getShortContent)),
-          ]),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "btn btn-outline-primary text-left",
-              attrs: { href: "#", role: "button" },
-            },
-            [_vm._v("Read More")]
-          ),
-        ]),
+            _vm._v(" "),
+            _c("h2", { staticClass: "text-left" }, [
+              _vm._v(
+                "\n          " + _vm._s(_vm.postData["title"]) + "\n        "
+              ),
+            ]),
+            _vm._v(" "),
+            _vm._l(_vm.postData["tags"], function (tag) {
+              return _c(
+                "span",
+                {
+                  key: "tag" + tag.id,
+                  staticClass:
+                    "badge badge-pill font-weight-bold badge-success mb-3 mr-2",
+                },
+                [_vm._v(_vm._s(tag["name"]))]
+              )
+            }),
+            _vm._v(" "),
+            _c("p", { staticClass: "text-left" }, [
+              _vm._v(_vm._s(_vm.getShortContent)),
+            ]),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-outline-primary text-left",
+                attrs: { href: "#", role: "button" },
+              },
+              [_vm._v("Read More")]
+            ),
+          ],
+          2
+        ),
       ]),
     ]),
   ])
@@ -3025,7 +3046,7 @@ var render = function () {
       _c(
         "span",
         { staticClass: "badge badge-pill font-weight-bold badge-primary mb-3" },
-        [_vm._v(_vm._s(_vm.postData["category"]))]
+        [_vm._v(_vm._s(_vm.postData["category"]["name"]))]
       ),
     ]),
     _vm._v(" "),
@@ -3078,9 +3099,9 @@ var render = function () {
           _vm._v("The best blog in town!"),
         ]),
         _vm._v(" "),
-        !_vm.loaded ? _c("h1", [_vm._v("Loading")]) : _vm._e(),
-        _vm._v(" "),
-        _vm.initData && _vm.posts.length > 0
+        !_vm.loaded
+          ? _c("h1", [_vm._v("Loading")])
+          : _vm.initData && _vm.posts.length > 0
           ? _c(
               "div",
               [
