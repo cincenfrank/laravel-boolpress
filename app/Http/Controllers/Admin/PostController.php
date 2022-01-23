@@ -72,6 +72,7 @@ class PostController extends Controller
     public function show(Post $post)
     {
         //
+        return view('admin.posts.show', compact('post'));
     }
 
     /**
@@ -101,7 +102,7 @@ class PostController extends Controller
         $data = $request->all();
         $post->update($data);
         $post->tags()->sync($data['tags']);
-        return redirect()->route('admin.posts.index');
+        return redirect()->route('admin.posts.show', $post->id);
     }
 
     /**
