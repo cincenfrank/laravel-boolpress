@@ -16,7 +16,7 @@
         >Last update: {{ postData["updated_at"] }}</small
       >
       <span class="badge badge-pill font-weight-bold badge-primary mb-3">{{
-        postData["category"]
+        postData["category"]["name"]
       }}</span>
     </p>
     <h4 class="text-left">

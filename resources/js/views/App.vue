@@ -6,7 +6,7 @@
       <h5 class="mb-5 text-black-50">The best blog in town!</h5>
       <!-- <h1 class="text-success">Vue Page</h1> -->
       <h1 v-if="!loaded">Loading</h1>
-      <div v-if="initData && posts.length > 0">
+      <div v-else-if="initData && posts.length > 0">
         <h4>Suggested for you:</h4>
 
         <MainPost :postData="posts[randomIndex]"></MainPost>
@@ -91,9 +91,9 @@ export default {
     },
     initializeData() {
       if (this.loaded) {
-        this.posts.forEach((post) => {
-          post.category = this.categories[post.category_id - 1]["name"];
-        });
+        //   this.posts.forEach((post) => {
+        //     post.category = this.categories[post.category_id - 1]["name"];
+        //   });
         this.initData = true;
       }
     },

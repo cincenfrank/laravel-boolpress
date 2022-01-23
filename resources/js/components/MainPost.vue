@@ -21,11 +21,17 @@
             >
           </p>
           <span class="badge badge-pill font-weight-bold badge-primary mb-3">{{
-            postData["category"]
+            postData["category"]["name"]
           }}</span>
           <h2 class="text-left">
             {{ postData["title"] }}
           </h2>
+          <span
+            v-for="tag in postData['tags']"
+            :key="'tag' + tag.id"
+            class="badge badge-pill font-weight-bold badge-success mb-3 mr-2"
+            >{{ tag["name"] }}</span
+          >
           <p class="text-left">{{ getShortContent }}</p>
           <a class="btn btn-outline-primary text-left" href="#" role="button"
             >Read More</a
