@@ -1,6 +1,12 @@
 <template>
   <nav
-    class="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light"
+    class="
+      navbar navbar-dark
+      bg-dark
+      navbar-expand-lg navbar-light
+      bg-light
+      fixed-top
+    "
   >
     <div class="container-fluid">
       <a class="navbar-brand" href="#">BoolPress</a>

@@ -1983,6 +1983,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "GuestNavigationBar",
   data: function data() {
@@ -2183,6 +2189,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2200,20 +2222,38 @@ __webpack_require__.r(__webpack_exports__);
       categories: [],
       postLoaded: false,
       categoryLoaded: false,
-      initData: false
+      initData: false,
+      currentPostsPage: 1,
+      currentNextPage: null,
+      currentPreviousPage: null
     };
   },
   methods: {
     getPosts: function getPosts() {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("/api/posts").then(function (resp) {
-        // console.log(resp.data);
-        _this.posts = resp.data;
+      this.postLoaded = false;
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("/api/posts?page=".concat(this.currentPostsPage)).then(function (resp) {
+        console.log(resp.data);
+        _this.posts = resp.data.data;
+        _this.currentPreviousPage = resp.data.current_page === 1 ? null : resp.data.current_page - 1;
+        _this.currentNextPage = resp.data.current_page < resp.data.last_page ? resp.data.current_page + 1 : null;
         _this.postLoaded = true;
 
         _this.initializeData();
       });
+    },
+    onNextPage: function onNextPage() {
+      if (this.currentNextPage) {
+        this.currentPostsPage = this.currentNextPage;
+        this.getPosts();
+      }
+    },
+    onPreviousPage: function onPreviousPage() {
+      if (this.currentPreviousPage) {
+        this.currentPostsPage = this.currentPreviousPage;
+        this.getPosts();
+      }
     },
     getCategories: function getCategories() {
       var _this2 = this;
@@ -2749,7 +2789,7 @@ var staticRenderFns = [
       "nav",
       {
         staticClass:
-          "navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light",
+          "\n    navbar navbar-dark\n    bg-dark\n    navbar-expand-lg navbar-light\n    bg-light\n    fixed-top\n  ",
       },
       [
         _c("div", { staticClass: "container-fluid" }, [
@@ -3088,54 +3128,82 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "w-100" },
+    { staticClass: "w-100 bg-custom py-5 mt-5" },
     [
       _c("GuestNavigationBar"),
       _vm._v(" "),
-      _c("div", { staticClass: "container py-5" }, [
-        _c("h1", [_vm._v("BoolPress Blog")]),
-        _vm._v(" "),
-        _c("h5", { staticClass: "mb-5 text-black-50" }, [
-          _vm._v("The best blog in town!"),
-        ]),
-        _vm._v(" "),
-        !_vm.loaded
-          ? _c("h1", [_vm._v("Loading")])
-          : _vm.initData && _vm.posts.length > 0
-          ? _c(
-              "div",
-              [
-                _c("h4", [_vm._v("Suggested for you:")]),
-                _vm._v(" "),
-                _c("MainPost", {
-                  attrs: { postData: _vm.posts[_vm.randomIndex] },
-                }),
-                _vm._v(" "),
-                _c("h4", { staticClass: "my-3" }, [_vm._v("Category A")]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-2",
-                  },
-                  _vm._l(_vm.posts, function (post) {
-                    return _c(
-                      "div",
-                      { key: post.id, staticClass: "col my-3" },
-                      [_c("SuggestedPost", { attrs: { postData: post } })],
-                      1
-                    )
+      _c(
+        "div",
+        { staticClass: "container pt-5 pb-3 bg-light border rounded shadow" },
+        [
+          _c("h1", [_vm._v("BoolPress Blog")]),
+          _vm._v(" "),
+          _c("h5", { staticClass: "mb-5 text-black-50" }, [
+            _vm._v("The best blog in town!"),
+          ]),
+          _vm._v(" "),
+          !_vm.loaded
+            ? _c("h1", [_vm._v("Loading")])
+            : _vm.initData && _vm.posts.length > 0
+            ? _c(
+                "div",
+                [
+                  _c("h4", [_vm._v("Suggested for you:")]),
+                  _vm._v(" "),
+                  _c("MainPost", {
+                    attrs: { postData: _vm.posts[_vm.randomIndex] },
                   }),
-                  0
-                ),
-              ],
-              1
-            )
-          : _c("div", [
-              _c("h2", [_vm._v("No Posts Available. We are working for you!")]),
-            ]),
-      ]),
+                  _vm._v(" "),
+                  _c("h4", { staticClass: "my-3" }, [_vm._v("Posts:")]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-2",
+                    },
+                    _vm._l(_vm.posts, function (post) {
+                      return _c(
+                        "div",
+                        { key: post.id, staticClass: "col my-3" },
+                        [_c("SuggestedPost", { attrs: { postData: post } })],
+                        1
+                      )
+                    }),
+                    0
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "d-flex justify-content-center" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-info mx-2",
+                        class: !_vm.currentPreviousPage ? "disabled" : "",
+                        on: { click: _vm.onPreviousPage },
+                      },
+                      [_vm._v("\n          Prev.\n        ")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-info mx-2",
+                        class: !_vm.currentNextPage ? "disabled" : "",
+                        on: { click: _vm.onNextPage },
+                      },
+                      [_vm._v("\n          Next\n        ")]
+                    ),
+                  ]),
+                ],
+                1
+              )
+            : _c("div", [
+                _c("h2", [
+                  _vm._v("No Posts Available. We are working for you!"),
+                ]),
+              ]),
+        ]
+      ),
     ],
     1
   )

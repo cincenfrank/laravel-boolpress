@@ -1,7 +1,7 @@
 <template>
-  <div class="w-100">
+  <div class="w-100 bg-custom py-5 mt-5">
     <GuestNavigationBar></GuestNavigationBar>
-    <div class="container py-5">
+    <div class="container pt-5 pb-3 bg-light border rounded shadow">
       <h1>BoolPress Blog</h1>
       <h5 class="mb-5 text-black-50">The best blog in town!</h5>
       <!-- <h1 class="text-success">Vue Page</h1> -->
@@ -10,11 +10,27 @@
         <h4>Suggested for you:</h4>
 
         <MainPost :postData="posts[randomIndex]"></MainPost>
-        <h4 class="my-3">Category A</h4>
+        <h4 class="my-3">Posts:</h4>
         <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-2">
           <div class="col my-3" v-for="post in posts" :key="post.id">
             <SuggestedPost :postData="post"></SuggestedPost>
           </div>
+        </div>
+        <div class="d-flex justify-content-center">
+          <button
+            class="btn btn-outline-info mx-2"
+            :class="!currentPreviousPage ? 'disabled' : ''"
+            @click="onPreviousPage"
+          >
+            Prev.
+          </button>
+          <button
+            class="btn btn-outline-info mx-2"
+            :class="!currentNextPage ? 'disabled' : ''"
+            @click="onNextPage"
+          >
+            Next
+          </button>
         </div>
       </div>
       <div v-else>
@@ -71,16 +87,38 @@ export default {
       postLoaded: false,
       categoryLoaded: false,
       initData: false,
+      currentPostsPage: 1,
+      currentNextPage: null,
+      currentPreviousPage: null,
     };
   },
   methods: {
     getPosts() {
-      axios.get("/api/posts").then((resp) => {
-        // console.log(resp.data);
-        this.posts = resp.data;
+      this.postLoaded = false;
+      axios.get(`/api/posts?page=${this.currentPostsPage}`).then((resp) => {
+        console.log(resp.data);
+        this.posts = resp.data.data;
+        this.currentPreviousPage =
+          resp.data.current_page === 1 ? null : resp.data.current_page - 1;
+        this.currentNextPage =
+          resp.data.current_page < resp.data.last_page
+            ? resp.data.current_page + 1
+            : null;
         this.postLoaded = true;
         this.initializeData();
       });
+    },
+    onNextPage() {
+      if (this.currentNextPage) {
+        this.currentPostsPage = this.currentNextPage;
+        this.getPosts();
+      }
+    },
+    onPreviousPage() {
+      if (this.currentPreviousPage) {
+        this.currentPostsPage = this.currentPreviousPage;
+        this.getPosts();
+      }
     },
     getCategories() {
       axios.get("/api/categories").then((resp) => {

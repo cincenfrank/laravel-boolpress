@@ -10962,3 +10962,7 @@ a.text-dark:focus {
   }
 }
 
+.bg-custom {
+  background-color: lightgrey;
+}
+
