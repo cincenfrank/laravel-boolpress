@@ -33,8 +33,11 @@
             >{{ tag["name"] }}</span
           >
           <p class="text-left">{{ getShortContent }}</p>
-          <a class="btn btn-outline-primary text-left" href="#" role="button"
-            >Read More</a
+          <router-link
+            class="btn btn-outline-primary text-left"
+            :to="`post/${postData.id}`"
+            role="button"
+            >Read More</router-link
           >
         </div>
       </div>

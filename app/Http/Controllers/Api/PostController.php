@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class PostController extends Controller
 {
@@ -47,9 +48,15 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
         //
+        // $id = intval($id);
+        $post = Post::find($id);
+        if (!$post) {
+            throw new HttpException("Post Not Found");
+        }
+        return response()->json($post);
     }
 
     /**

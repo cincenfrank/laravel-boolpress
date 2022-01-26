@@ -31,6 +31,10 @@
                     </li>
 
                     @endforeach
+                    <div class="d-flex justify-content-center my-3">
+
+                        {{$posts->links()}}
+                    </div>
 
                 </ul>
 

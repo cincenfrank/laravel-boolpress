@@ -19,9 +19,7 @@ class PostController extends Controller
     public function index()
     {
         //
-
-
-        $posts = Post::where("author_id", Auth::user()->id)->get();
+        $posts = Post::where("author_id", Auth::user()->id)->paginate(10);
         return view('admin.posts.home', compact('posts'));
     }
 

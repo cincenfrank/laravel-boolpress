@@ -30,7 +30,15 @@
           style="--bs-scroll-height: 100px"
         >
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
+            <router-link class="nav-link active" aria-current="page" to="/"
+              >Home</router-link
+            >
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="contact">Contacts</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="about">About Us</router-link>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/admin">Admin</a>
