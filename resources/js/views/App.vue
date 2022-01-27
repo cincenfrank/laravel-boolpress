@@ -1,7 +1,9 @@
 <template>
   <div class="w-100 bg-custom py-5 mt-5">
     <GuestNavigationBar></GuestNavigationBar>
-    <router-view></router-view>
+    <transition name="slide-fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 

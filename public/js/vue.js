@@ -554,6 +554,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -1621,7 +1623,16 @@ var render = function () {
   return _c(
     "div",
     { staticClass: "w-100 bg-custom py-5 mt-5" },
-    [_c("GuestNavigationBar"), _vm._v(" "), _c("router-view")],
+    [
+      _c("GuestNavigationBar"),
+      _vm._v(" "),
+      _c(
+        "transition",
+        { attrs: { name: "slide-fade", mode: "out-in" } },
+        [_c("router-view")],
+        1
+      ),
+    ],
     1
   )
 }
