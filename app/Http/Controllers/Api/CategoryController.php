@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Category;
 use App\Http\Controllers\Controller;
+use App\Post;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -49,6 +50,9 @@ class CategoryController extends Controller
     public function show($id)
     {
         //
+        $category = Category::where('id', $id)->with('posts.category')->with('posts.tags')->with('posts.user')->first();
+
+        return $category;
     }
 
     /**

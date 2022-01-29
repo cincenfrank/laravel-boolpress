@@ -8,7 +8,7 @@
       fixed-top
     "
   >
-    <div class="container-fluid">
+    <div class="container">
       <a class="navbar-brand" href="#">BoolPress</a>
       <button
         class="navbar-toggler"
@@ -30,15 +30,23 @@
           style="--bs-scroll-height: 100px"
         >
           <li class="nav-item">
-            <router-link class="nav-link active" aria-current="page" to="/"
+            <router-link
+              class="nav-link"
+              aria-current="page"
+              to="/"
+              exact-active-class="active"
               >Home</router-link
             >
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="contact">Contacts</router-link>
+            <router-link class="nav-link" to="contact" active-class="active"
+              >Contacts</router-link
+            >
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="about">About Us</router-link>
+            <router-link class="nav-link" to="about" active-class="active"
+              >About Us</router-link
+            >
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/admin">Admin</a>

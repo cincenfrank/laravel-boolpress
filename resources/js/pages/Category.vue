@@ -29,9 +29,7 @@
                   v-for="category in categories"
                   :key="'category-' + category.id"
                 >
-                  <router-link :to="`category/${category.id}`">{{
-                    category.name
-                  }}</router-link>
+                  {{ category.name }}
                 </li>
               </ul>
             </div>
@@ -99,10 +97,10 @@ export default {
     getPosts() {
       this.postLoaded = false;
       window.axios
-        .get(`/api/posts?page=${this.currentPostsPage}`)
+        .get(`/api/categories/${this.$route.params.id}`)
         .then((resp) => {
           console.log(resp.data);
-          this.posts = resp.data.data;
+          this.posts = resp.data.posts;
           this.currentPreviousPage =
             resp.data.current_page === 1 ? null : resp.data.current_page - 1;
           this.currentNextPage =

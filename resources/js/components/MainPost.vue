@@ -1,6 +1,6 @@
 <template>
   <div class="mb-5 mt-3">
-    <div class="row g-0">
+    <div class="row">
       <div class="col-md-5">
         <img
           :src="postData['imageSrc']"
