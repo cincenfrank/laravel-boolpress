@@ -8,6 +8,7 @@ use App\Post;
 use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Ramsey\Uuid\Uuid;
 
 class PostController extends Controller
 {
@@ -49,6 +50,7 @@ class PostController extends Controller
         $newPost = new Post();
         $newPost->fill($data);
         $newPost->author_id = Auth::user()->id;
+        $newPost->uuid = Uuid::uuid4();
         // dump($data['tags']);
 
 

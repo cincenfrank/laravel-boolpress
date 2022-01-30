@@ -1,6 +1,11 @@
 <template>
   <nav
-    class="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light"
+    class="
+      navbar navbar-dark
+      bg-transparent
+      navbar-expand-lg navbar-light
+      bg-light
+    "
   >
     <div class="container">
       <a class="navbar-brand" href="#">BoolPress</a>
@@ -33,43 +38,13 @@
             >
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="contact" active-class="active"
+            <router-link class="nav-link" to="/contact" active-class="active"
               >Contacts</router-link
             >
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="about" active-class="active"
+            <router-link class="nav-link" to="/about" active-class="active"
               >About Us</router-link
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/admin">Admin</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="navbarScrollingDropdown"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Link
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider" /></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link disabled"
-              href="#"
-              tabindex="-1"
-              aria-disabled="true"
-              >Link</a
             >
           </li>
         </ul>
@@ -84,6 +59,29 @@
             Search
           </button>
         </form>
+        <ul class="navbar-nav ms-4 my-2 my-lg-0 navbar-nav-scroll">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarScrollingDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              More
+            </a>
+            <ul
+              class="dropdown-menu dropdown-menu-custom"
+              aria-labelledby="navbarScrollingDropdown"
+            >
+              <li><a class="dropdown-item" href="/admin">Admin Page</a></li>
+              <!-- <li><a class="dropdown-item" href="">Another action</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>

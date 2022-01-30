@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-5 mt-3">
+  <div class="mb-5 mt-3 custom-component-bg p-3">
     <div class="row">
       <div class="col-md-5">
         <img
@@ -23,7 +23,7 @@
           <span class="badge badge-pill font-weight-bold badge-primary mb-3">{{
             postData["category"]["name"]
           }}</span>
-          <h2 class="text-left">
+          <h2 class="text-left text-light">
             {{ postData["title"] }}
           </h2>
           <span
@@ -32,9 +32,9 @@
             class="badge badge-pill font-weight-bold badge-success mb-3 mr-2"
             >{{ tag["name"] }}</span
           >
-          <p class="text-left">{{ getShortContent }}</p>
+          <p class="text-left text-light">{{ getShortContent }}</p>
           <router-link
-            class="btn btn-outline-primary text-left"
+            class="btn btn-outline-info text-left"
             :to="`/post/${postData.uuid}`"
             role="button"
             >Read More</router-link

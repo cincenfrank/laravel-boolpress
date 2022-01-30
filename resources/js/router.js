@@ -15,26 +15,41 @@ const router = new VueRouter({
             path: "/",
             name: "home",
             component: Home,
+            meta: {
+                title: "Home Page",
+            },
         },
         {
             path: "/about",
             name: "about",
             component: About,
+            meta: {
+                title: "About Us",
+            },
         },
         {
             path: "/contact",
             name: "contact",
             component: Contact,
+            meta: {
+                title: "Contact Us",
+            },
         },
         {
             path: "/post/:id",
             name: "post",
             component: Post,
+            meta: {
+                title: "Read Post",
+            },
         },
         {
             path: "/category/:id",
             name: "category",
             component: Category,
+            meta: {
+                title: "Category",
+            },
         },
     ],
 });

@@ -1,16 +1,16 @@
 <template>
   <div class="">
-    <h1>BoolPress Blog</h1>
-    <h5 class="mb-5 text-black-50">The best blog in town!</h5>
+    <!-- <h1>BoolPress Blog</h1>
+    <h5 class="mb-5 text-black-50">The best blog in town!</h5> -->
     <h1 v-if="!loaded">Loading</h1>
     <div v-else-if="initData && posts.length > 0">
       <div class="row">
-        <div class="col">
-          <h4>Suggested for you:</h4>
+        <div class="col h-100">
+          <h4 class="text-light">Suggested for you:</h4>
 
           <MainPost :postData="posts[randomIndex]"></MainPost>
 
-          <h4 class="my-3">Posts:</h4>
+          <h4 class="mt-3 text-light">Posts:</h4>
           <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-2">
             <div class="col my-3" v-for="post in posts" :key="post.id">
               <SuggestedPost :postData="post"></SuggestedPost>
@@ -18,11 +18,10 @@
           </div>
         </div>
 
-        <div class="col-2">
+        <!-- <div class="col-2">
           <div class="card justify-content-start">
             <div class="card-body overflow-hidden">
               <h4 class="card-title">Categories</h4>
-              <!-- <p class="card-text">Text</p> -->
               <ul class="list-group list-group-flush">
                 <li
                   class="list-group-item"
@@ -40,7 +39,6 @@
           <div class="card justify-content-start my-3">
             <div class="card-body overflow-hidden">
               <h4 class="card-title">Tags</h4>
-              <!-- <p class="card-text">Text</p> -->
               <ul class="list-group list-group-flush">
                 <li
                   class="list-group-item"
@@ -52,7 +50,7 @@
               </ul>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="d-flex justify-content-center">
         <button
@@ -125,13 +123,13 @@ export default {
         this.getPosts();
       }
     },
-    getCategories() {
-      axios.get("/api/categories").then((resp) => {
-        this.categories = resp.data;
-        this.categoryLoaded = true;
-        this.initializeData();
-      });
-    },
+    // getCategories() {
+    //   axios.get("/api/categories").then((resp) => {
+    //     this.categories = resp.data;
+    //     this.categoryLoaded = true;
+    //     this.initializeData();
+    //   });
+    // },
     initializeData() {
       if (this.loaded) {
         //   this.posts.forEach((post) => {
@@ -151,12 +149,12 @@ export default {
       return this.getRandomInt(0, this.posts.length);
     },
     loaded() {
-      return this.postLoaded && this.categoryLoaded;
+      return this.postLoaded; //&& this.categoryLoaded;
     },
   },
   mounted() {
     this.getPosts();
-    this.getCategories();
+    // this.getCategories();
   },
 };
 </script>

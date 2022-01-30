@@ -8,14 +8,15 @@
 @import "~bootstrap/scss/bootstrap";
 
 body {
-    background-color: rgb(20, 20, 20);
+    background-color: black;
+
     .custom-layout-card {
         // rounded
         border-radius: 20px;
         //   shadow
         box-shadow: 0 4px 8px 0 rgb(25, 0, 248), 0 6px 20px 0 rgb(7, 156, 243);
         //   bg-light
-        background-color: bisque;
+        // background-color: ;
         //   h-100
         height: 100%;
         //   overflow-auto
@@ -26,6 +27,45 @@ body {
         display: flex;
         //   flex-column
         flex-direction: column;
+
+        .header-component {
+            position: relative;
+            & > * {
+                z-index: 9;
+            }
+            &::before {
+                position: absolute;
+                content: "";
+
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: url("https://www.thesprucecrafts.com/thmb/ahqIg3PO30YrzFrH57PgBiRBwIA=/1500x1000/filters:fill(auto,1)/how-many-letter-tiles-are-in-scrabble-410933_hero_3077-e4f81bffe842462aadfa3413c03e4d43.jpg");
+                opacity: 0.1;
+            }
+            // w-100
+            // text-white
+            // top-0
+            // d-flex
+            // flex-column
+            // justify-content-center
+            // align-items-center
+            .title-image {
+                max-height: 100px;
+                object-fit: cover;
+                background-color: black;
+                opacity: 0.3;
+                // position: absolute;
+            }
+            .dropdown-menu-custom {
+                left: -100% !important;
+            }
+        }
+        .custom-component-bg {
+            background-color: rgb(66, 66, 66);
+            border-radius: 20px;
+        }
     }
 }
 .slide-enter-active,
