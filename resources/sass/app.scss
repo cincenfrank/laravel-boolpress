@@ -7,8 +7,26 @@
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
 
-.bg-custom {
-    background-color: lightgrey;
+body {
+    background-color: rgb(20, 20, 20);
+    .custom-layout-card {
+        // rounded
+        border-radius: 20px;
+        //   shadow
+        box-shadow: 0 4px 8px 0 rgb(25, 0, 248), 0 6px 20px 0 rgb(7, 156, 243);
+        //   bg-light
+        background-color: bisque;
+        //   h-100
+        height: 100%;
+        //   overflow-auto
+        overflow: auto;
+        //   pb-3
+        padding-bottom: 20px;
+        //   d-flex
+        display: flex;
+        //   flex-column
+        flex-direction: column;
+    }
 }
 .slide-enter-active,
 .slide-leave-active {

@@ -50,7 +50,7 @@ class CategoryController extends Controller
     public function show($id)
     {
         //
-        $category = Category::where('id', $id)->with('posts.category')->with('posts.tags')->with('posts.user')->first();
+        $category = Category::where('id', $id)->with('postsLimited.category')->with('postsLimited.tags')->with('postsLimited.user')->first();
 
         return $category;
     }

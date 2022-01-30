@@ -1,12 +1,6 @@
 <template>
   <nav
-    class="
-      navbar navbar-dark
-      bg-dark
-      navbar-expand-lg navbar-light
-      bg-light
-      fixed-top
-    "
+    class="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light"
   >
     <div class="container">
       <a class="navbar-brand" href="#">BoolPress</a>

@@ -35,7 +35,7 @@
           <p class="text-left">{{ getShortContent }}</p>
           <router-link
             class="btn btn-outline-primary text-left"
-            :to="`post/${postData.id}`"
+            :to="`/post/${postData.uuid}`"
             role="button"
             >Read More</router-link
           >

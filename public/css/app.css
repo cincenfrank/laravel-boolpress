@@ -12178,8 +12178,19 @@ fieldset:disabled .btn {
   }
 }
 
-.bg-custom {
-  background-color: lightgrey;
+body {
+  background-color: #141414;
+}
+
+body .custom-layout-card {
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 #1900f8, 0 6px 20px 0 #079cf3;
+  background-color: bisque;
+  height: 100%;
+  overflow: auto;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .slide-enter-active,

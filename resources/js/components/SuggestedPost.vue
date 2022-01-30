@@ -1,5 +1,6 @@
+
 <template>
-  <div class="">
+  <div class="h-100 d-flex flex-column align-items-start">
     <img
       :src="postData['imageSrc']"
       class="img-fluid rounded w-100"
@@ -11,20 +12,19 @@
       "
     />
 
-    <p class="text-left">
-      <small class="text-muted"
-        >Last update: {{ postData["updated_at"] }}</small
-      >
-      <span class="badge badge-pill font-weight-bold badge-primary mb-3">{{
+    <p class="text-left mt-2">
+      <small class="text-muted">Last update: {{ formattedData }}</small>
+
+      <span class="badge rounded-pill bg-primary font-weight-bold mb-3">{{
         postData["category"]["name"]
       }}</span>
     </p>
-    <h4 class="text-left">
+    <h4 class="text-left flex-grow-1">
       {{ postData["title"] }}
     </h4>
     <router-link
       class="btn btn-outline-primary text-left"
-      :to="`post/${postData.id}`"
+      :to="`/post/${postData.uuid}`"
       role="button"
       >Read More</router-link
     >
@@ -32,9 +32,15 @@
 </template>
 
 <script>
+var dayjs = require("dayjs");
 export default {
   name: "SuggestedPost",
   props: { postData: Object },
+  computed: {
+    formattedData() {
+      return dayjs(this.postData["updated_at"]).format("DD/MM/YY HH:mm:ss");
+    },
+  },
 };
 </script>
 

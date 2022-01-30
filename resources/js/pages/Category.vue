@@ -1,6 +1,9 @@
 <template>
   <div class="container pt-5 pb-3 bg-light border rounded shadow">
-    <h1>BoolPress Blog</h1>
+    <h1>
+      BoolPress Blog
+      {{ categoryName !== "" ? ` - Category: ${categoryName}` : "" }}
+    </h1>
     <h5 class="mb-5 text-black-50">The best blog in town!</h5>
     <h1 v-if="!loaded">Loading</h1>
     <div v-else-if="initData && posts.length > 0">
@@ -12,7 +15,7 @@
 
           <h4 class="my-3">Posts:</h4>
           <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-2">
-            <div class="col my-3" v-for="post in posts" :key="post.id">
+            <div class="col my-3 h-100" v-for="post in posts" :key="post.id">
               <SuggestedPost :postData="post"></SuggestedPost>
             </div>
           </div>
@@ -52,7 +55,7 @@
           </div>
         </div>
       </div>
-      <div class="d-flex justify-content-center">
+      <!-- <div class="d-flex justify-content-center">
         <button
           class="btn btn-outline-info mx-2"
           :class="!currentPreviousPage ? 'disabled' : ''"
@@ -67,7 +70,7 @@
         >
           Next
         </button>
-      </div>
+      </div> -->
     </div>
     <div v-else>
       <h2>No Posts Available. We are working for you!</h2>
@@ -83,6 +86,7 @@ export default {
   name: "Home",
   data() {
     return {
+      categoryName: "",
       posts: [],
       categories: [],
       postLoaded: false,
@@ -100,13 +104,14 @@ export default {
         .get(`/api/categories/${this.$route.params.id}`)
         .then((resp) => {
           console.log(resp.data);
-          this.posts = resp.data.posts;
-          this.currentPreviousPage =
-            resp.data.current_page === 1 ? null : resp.data.current_page - 1;
-          this.currentNextPage =
-            resp.data.current_page < resp.data.last_page
-              ? resp.data.current_page + 1
-              : null;
+          this.posts = resp.data.posts_limited;
+          this.categoryName = resp.data.name;
+          // this.currentPreviousPage =
+          //   resp.data.current_page === 1 ? null : resp.data.current_page - 1;
+          // this.currentNextPage =
+          //   resp.data.current_page < resp.data.last_page
+          //     ? resp.data.current_page + 1
+          //     : null;
           this.postLoaded = true;
           this.initializeData();
         });

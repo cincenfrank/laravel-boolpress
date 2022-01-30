@@ -1,5 +1,5 @@
 <template>
-  <div class="container pt-5 pb-3 bg-light border rounded shadow">
+  <div class="">
     <h1>BoolPress Blog</h1>
     <h5 class="mb-5 text-black-50">The best blog in town!</h5>
     <h1 v-if="!loaded">Loading</h1>

@@ -48,15 +48,15 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($uuid)
     {
         //
         // $id = intval($id);
-        $post = Post::find($id);
+        $post = Post::where('uuid', $uuid)->first();
         if (!$post) {
             throw new HttpException("Post Not Found");
         }
-        return response()->json($post);
+        return response($post);
     }
 
     /**
