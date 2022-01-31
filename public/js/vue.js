@@ -2609,7 +2609,9 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("h1", { staticClass: "mb-2" }, [_vm._v(_vm._s(_vm.post.title))]),
+    _c("h1", { staticClass: "mb-2 text-white" }, [
+      _vm._v(_vm._s(_vm.post.title)),
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "d-flex" }, [
       _c("div", { staticClass: "col-4" }, [
@@ -2624,7 +2626,7 @@ var render = function () {
         }),
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-8" }, [
+      _c("div", { staticClass: "col-8 text-white" }, [
         _c("p", [_vm._v(_vm._s(_vm.post.content))]),
       ]),
     ]),

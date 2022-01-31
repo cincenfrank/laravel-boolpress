@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1 class="mb-2">{{ post.title }}</h1>
+    <h1 class="mb-2 text-white">{{ post.title }}</h1>
     <div class="d-flex">
       <div class="col-4">
         <img
@@ -13,7 +13,7 @@
           alt="immagine"
         />
       </div>
-      <div class="col-8">
+      <div class="col-8 text-white">
         <p>{{ post.content }}</p>
       </div>
     </div>
