@@ -2125,7 +2125,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", {}, [
     !_vm.loaded
-      ? _c("h1", [_vm._v("Loading")])
+      ? _c("h1", { staticClass: "text-white" }, [_vm._v("Loading")])
       : _vm.initData && _vm.posts.length > 0
       ? _c("div", [
           _c("div", { staticClass: "row" }, [
@@ -2189,7 +2189,9 @@ var render = function () {
           ]),
         ])
       : _c("div", [
-          _c("h2", [_vm._v("No Posts Available. We are working for you!")]),
+          _c("h2", { staticClass: "text-white" }, [
+            _vm._v("No Posts Available. We are working for you!"),
+          ]),
         ]),
   ])
 }

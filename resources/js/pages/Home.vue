@@ -2,7 +2,7 @@
   <div class="">
     <!-- <h1>BoolPress Blog</h1>
     <h5 class="mb-5 text-black-50">The best blog in town!</h5> -->
-    <h1 v-if="!loaded">Loading</h1>
+    <h1 class="text-white" v-if="!loaded">Loading</h1>
     <div v-else-if="initData && posts.length > 0">
       <div class="row">
         <div class="col h-100">
@@ -70,7 +70,7 @@
       </div>
     </div>
     <div v-else>
-      <h2>No Posts Available. We are working for you!</h2>
+      <h2 class="text-white">No Posts Available. We are working for you!</h2>
     </div>
   </div>
 </template>
