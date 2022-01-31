@@ -371,6 +371,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "MainPost",
   props: {
@@ -398,6 +402,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -665,7 +673,120 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      mailObject: {
+        firstName: "",
+        lastName: "",
+        email: "",
+        content: ""
+      },
+      formSubmitted: false
+    };
+  },
+  methods: {
+    sendEmail: function sendEmail() {
+      var _this = this;
+
+      window.axios.post("/api/contacts", this.mailObject).then(function (resp) {
+        _this.formSubmitted = true;
+      })["catch"](function (error) {// console.log(error);
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -849,6 +970,14 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -1779,7 +1908,12 @@ var render = function () {
             "border-radius": "20px !important",
             "object-fit": "cover",
           },
-          attrs: { src: _vm.postData["imageSrc"], alt: "..." },
+          attrs: {
+            src: _vm.postData["imageSrc"].startsWith("http")
+              ? _vm.postData["imageSrc"]
+              : "/storage/" + _vm.postData["imageSrc"],
+            alt: "...",
+          },
         }),
       ]),
       _vm._v(" "),
@@ -1874,7 +2008,12 @@ var render = function () {
             "border-radius": "10px !important",
             "object-fit": "cover",
           },
-          attrs: { src: _vm.postData["imageSrc"], alt: "..." },
+          attrs: {
+            src: _vm.postData["imageSrc"].startsWith("http")
+              ? _vm.postData["imageSrc"]
+              : "/storage/" + _vm.postData["imageSrc"],
+            alt: "...",
+          },
         }),
         _vm._v(" "),
         _c("p", { staticClass: "text-left mt-2" }, [
@@ -2099,9 +2238,261 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("Contact Page")])
+  return _c("div", [
+    _c("h1", [_vm._v("Contact Page")]),
+    _vm._v(" "),
+    !_vm.formSubmitted
+      ? _c(
+          "form",
+          {
+            staticClass: "row g-3 needs-validation text-white",
+            attrs: { novalidate: "" },
+          },
+          [
+            _c("div", { staticClass: "col-md-4" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "form-label",
+                  attrs: { for: "validationCustom01" },
+                },
+                [_vm._v("First name")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.mailObject.firstName,
+                    expression: "mailObject.firstName",
+                  },
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  id: "validationCustom01",
+                  value: "Mark",
+                  required: "",
+                },
+                domProps: { value: _vm.mailObject.firstName },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.mailObject, "firstName", $event.target.value)
+                  },
+                },
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "valid-feedback" }, [
+                _vm._v("Looks good!"),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-4" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "form-label",
+                  attrs: { for: "validationCustom02" },
+                },
+                [_vm._v("Last name")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.mailObject.lastName,
+                    expression: "mailObject.lastName",
+                  },
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  id: "validationCustom02",
+                  value: "Otto",
+                  required: "",
+                },
+                domProps: { value: _vm.mailObject.lastName },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.mailObject, "lastName", $event.target.value)
+                  },
+                },
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "valid-feedback" }, [
+                _vm._v("Looks good!"),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-4" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "form-label",
+                  attrs: { for: "validationCustomUsername" },
+                },
+                [_vm._v("Username")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group" }, [
+                _c(
+                  "span",
+                  {
+                    staticClass: "input-group-text",
+                    attrs: { id: "inputGroupPrepend" },
+                  },
+                  [_vm._v("@")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.mailObject.email,
+                      expression: "mailObject.email",
+                    },
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "validationCustomUsername",
+                    "aria-describedby": "inputGroupPrepend",
+                    required: "",
+                  },
+                  domProps: { value: _vm.mailObject.email },
+                  on: {
+                    input: function ($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.mailObject, "email", $event.target.value)
+                    },
+                  },
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "invalid-feedback" }, [
+                  _vm._v("Please choose a username."),
+                ]),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-12" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "form-label",
+                  attrs: { for: "validationCustom03" },
+                },
+                [_vm._v("Content")]
+              ),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.mailObject.content,
+                    expression: "mailObject.content",
+                  },
+                ],
+                staticClass: "form-control",
+                attrs: { id: "validationCustom03", required: "" },
+                domProps: { value: _vm.mailObject.content },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.mailObject, "content", $event.target.value)
+                  },
+                },
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "invalid-feedback" }, [
+                _vm._v("Please provide a valid city."),
+              ]),
+            ]),
+            _vm._v(" "),
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-12" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { type: "submit" },
+                  on: {
+                    click: function ($event) {
+                      $event.preventDefault()
+                      return _vm.sendEmail.apply(null, arguments)
+                    },
+                  },
+                },
+                [_vm._v("\n        Submit form\n      ")]
+              ),
+            ]),
+          ]
+        )
+      : _c("div", [
+          _c("h4", { staticClass: "text-white" }, [_vm._v("Message Sent!")]),
+          _vm._v(" "),
+          _c("small", [_vm._v("We will contact you ASAP!")]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "btn btn-outline-primary mt-5",
+              on: {
+                click: function ($event) {
+                  _vm.formSubmitted = false
+                },
+              },
+            },
+            [_vm._v("\n      Send another message\n    ")]
+          ),
+        ]),
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-12" }, [
+      _c("div", { staticClass: "form-check" }, [
+        _c("input", {
+          staticClass: "form-check-input",
+          attrs: {
+            type: "checkbox",
+            value: "",
+            id: "invalidCheck",
+            required: "",
+          },
+        }),
+        _vm._v(" "),
+        _c(
+          "label",
+          { staticClass: "form-check-label", attrs: { for: "invalidCheck" } },
+          [_vm._v("\n          Agree to terms and conditions\n        ")]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "invalid-feedback" }, [
+          _vm._v("You must agree before submitting."),
+        ]),
+      ]),
+    ])
+  },
+]
 render._withStripped = true
 
 
@@ -2224,7 +2615,12 @@ var render = function () {
       _c("div", { staticClass: "col-4" }, [
         _c("img", {
           staticClass: "mb-2 w-100",
-          attrs: { src: _vm.post.imageSrc, alt: "immagine" },
+          attrs: {
+            src: _vm.post.imageSrc.startsWith("http")
+              ? _vm.post.imageSrc
+              : "/storage/" + _vm.post.imageSrc,
+            alt: "immagine",
+          },
         }),
       ]),
       _vm._v(" "),

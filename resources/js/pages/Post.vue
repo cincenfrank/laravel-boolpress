@@ -3,7 +3,15 @@
     <h1 class="mb-2">{{ post.title }}</h1>
     <div class="d-flex">
       <div class="col-4">
-        <img class="mb-2 w-100" :src="post.imageSrc" alt="immagine" />
+        <img
+          class="mb-2 w-100"
+          :src="
+            post.imageSrc.startsWith('http')
+              ? post.imageSrc
+              : `/storage/${post.imageSrc}`
+          "
+          alt="immagine"
+        />
       </div>
       <div class="col-8">
         <p>{{ post.content }}</p>

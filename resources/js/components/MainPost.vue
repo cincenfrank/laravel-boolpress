@@ -3,7 +3,11 @@
     <div class="row">
       <div class="col-md-5">
         <img
-          :src="postData['imageSrc']"
+          :src="
+            postData['imageSrc'].startsWith('http')
+              ? postData['imageSrc']
+              : `/storage/${postData['imageSrc']}`
+          "
           class="img-fluid rounded w-100"
           alt="..."
           style="

@@ -3,7 +3,11 @@
   <div class="mt-3 custom-component-bg p-3 h-100">
     <div class="h-100 d-flex flex-column align-items-start">
       <img
-        :src="postData['imageSrc']"
+        :src="
+          postData['imageSrc'].startsWith('http')
+            ? postData['imageSrc']
+            : `/storage/${postData['imageSrc']}`
+        "
         class="img-fluid rounded w-100"
         alt="..."
         style="

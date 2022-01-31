@@ -8,6 +8,7 @@ use App\Post;
 use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Ramsey\Uuid\Uuid;
 
 class PostController extends Controller
@@ -51,6 +52,8 @@ class PostController extends Controller
         $newPost->fill($data);
         $newPost->author_id = Auth::user()->id;
         $newPost->uuid = Uuid::uuid4();
+        $img_path = Storage::put('uploads', $data['imageSrc']);
+        $newPost->imageSrc = $img_path;
         // dump($data['tags']);
 
 
@@ -100,8 +103,31 @@ class PostController extends Controller
     {
         //
         $data = $request->all();
+        // $oldImage = '';
+        // dd($data["imageSrc"]);
+        // if (!$data["imageSrc"]) {
+        //     # code...
+
+        // }
+
+        // $oldImage = $post->imageSrc;
+
+        if ($data['imageSrc']) {
+            // dd('ciao');
+            if (!str_starts_with($post->imageSrc, 'http')) {
+                # code...
+                Storage::delete($post->imageSrc);
+            }
+            $img_path = Storage::put('uploads', $data['imageSrc']);
+            $data["imageSrc"] = $img_path;
+        } else {
+            $data["imageSrc"] = $post->imageSrc;
+        }
+        // dd($data);
         $post->update($data);
-        $post->tags()->sync($data['tags']);
+        if (array_key_exists('tags', $data)) {
+            $post->tags()->sync($data['tags']);
+        }
         return redirect()->route('admin.posts.show', $post->id);
     }
 

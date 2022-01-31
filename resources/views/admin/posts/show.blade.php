@@ -65,27 +65,30 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="imageSrc">Image Link</label>
                                 <input disabled type="text" class="form-control w-100" name="imageSrc" id="imageSrc" aria-describedby="helpId" placeholder="Image Link" value="{{$post->imageSrc}}">
-                            </div>
-
+                        </div> --}}
+                        <div>
+                            <label for="" class="d-block">Image Link</label>
+                            <img src="{{asset('storage/'.$post->imageSrc)}}" alt="">
                         </div>
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <label for="content">Content</label>
-                    <textarea disabled name="content" id="content" class="w-100 form-control" rows="20"> {{$post->content}}</textarea>
-                </div>
-                <div class="text-right">
-                    <a href="{{route('admin.posts.edit',$post->id)}}" class="btn btn-outline-success" type="submit">Edit</a>
-                </div>
-                {{-- </form> --}}
-
             </div>
+
+            <div class="form-group">
+                <label for="content">Content</label>
+                <textarea disabled name="content" id="content" class="w-100 form-control" rows="20"> {{$post->content}}</textarea>
+            </div>
+            <div class="text-right">
+                <a href="{{route('admin.posts.edit',$post->id)}}" class="btn btn-outline-success" type="submit">Edit</a>
+            </div>
+            {{-- </form> --}}
+
         </div>
     </div>
+</div>
 </div>
 
 @endsection

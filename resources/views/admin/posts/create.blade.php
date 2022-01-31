@@ -8,7 +8,7 @@
             <div class="card-header">Edit Post</div>
 
             <div class="card-body">
-                <form action="{{route('admin.posts.store')}}" method="post" class="form">
+                <form action="{{route('admin.posts.store')}}" method="post" class="form" enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-group">
@@ -55,11 +55,14 @@
                                 </div>
 
 
-                                <div class="form-group">
-                                    <label for="imageSrc">Image Link</label>
+                                {{-- <div class="form-group">
                                     <input type="text" class="form-control w-100" name="imageSrc" id="imageSrc" aria-describedby="helpId" placeholder="Image Link" value="">
+                                </div> --}}
+                                <div class=" form-group mb-3">
+                                    <label for="imageSrc">Image Link</label>
+                                    {{-- <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon03">Button</button> --}}
+                                    <input type="file" class="form-control" id="imageSrc" aria-describedby="inputGroupFileAddon03" aria-label="Upload" name="imageSrc">
                                 </div>
-
                             </div>
                         </div>
                     </div>
